@@ -12,7 +12,6 @@ export const CineCatalogo = () => {
         </div>
         <div className="w-full">
             <Catalogo />
-
         </div>
     </div>
     </CatalogoProvider>

@@ -4,20 +4,13 @@ import { ItemCatalogo } from "@/components/itemCatalogo";
 import { useState } from "react";
 import { Modal } from "./modal";
 import { useCatalogo } from "@/contexts/catalogoContext";
+import { ModalAdd } from "./ModalAdd";
+import { ModalScreens } from "@/types/ModalScreens";
 
 export const Catalogo = () => {
   const catalogoCtx = useCatalogo();
-  const [ showModal, setShowModal ] = useState(false);
-
-  const handleAddButton = () => {
-    setShowModal(true);
-  }
-
-  const handleCloseModal = () => {
-
-    setShowModal(false);
-  }
-
+  const [ modalScreen, setModalScreen ] = useState<ModalScreens>(null);
+ 
 
   return (
     <div className="mt-2 p-2">
@@ -28,17 +21,19 @@ export const Catalogo = () => {
                 <div className="cursor-pointer border-none">
                     <Plus 
                         className="bg-red-500 rounded-full h-7 w-7" 
-                        onClick={handleAddButton}
+                        onClick={() => setModalScreen('add')}
                     />
                 </div>
            </div>
         
-        
         <div className="text-black">
-            {showModal &&
-                <Modal closeModal={handleCloseModal}/>
+            {modalScreen &&
+                <Modal closeModal={() => setModalScreen(null)}>
+                    {modalScreen == 'add' && <ModalAdd closeModal={() => setModalScreen(null)} />}
+                </Modal>
+                
             }
-            {!showModal &&
+            {!modalScreen &&
                 <div className="border-t border-red-300">
                     <ItemCatalogo />
                 </div>
