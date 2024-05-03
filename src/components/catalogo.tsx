@@ -6,6 +6,7 @@ import { Modal } from "./modal";
 import { useCatalogo } from "@/contexts/catalogoContext";
 import { ModalAdd } from "./ModalAdd";
 import { ModalScreens } from "@/types/ModalScreens";
+import { ModalEdit } from "./ModalEdit";
 
 export const Catalogo = () => {
   const catalogoCtx = useCatalogo();
@@ -30,12 +31,13 @@ export const Catalogo = () => {
             {modalScreen &&
                 <Modal closeModal={() => setModalScreen(null)}>
                     {modalScreen == 'add' && <ModalAdd closeModal={() => setModalScreen(null)} />}
+                    {modalScreen == 'edit' && <ModalEdit closeModal={() => setModalScreen(null)} />}
                 </Modal>
                 
             }
             {!modalScreen &&
                 <div className="border-t border-red-300">
-                    <ItemCatalogo />
+                    <ItemCatalogo showModalEdit={() => setModalScreen('edit')}/>
                 </div>
                 
             }
