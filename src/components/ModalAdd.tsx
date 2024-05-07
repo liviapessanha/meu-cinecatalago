@@ -15,7 +15,7 @@ export const ModalAdd = ( { closeModal }: Props) => {
     const [ generoInput, setGeneroInput ] = useState('');
     const [ tipoInput, setTipoInput ] = useState('');
     const [ avaliacaoInput, setAvaliacaoInput ] = useState('');
-    const [ errors, setErrors ] = useState<ErrorItem[]>([])
+    const [ errors, setErrors ] = useState<ErrorItem[]>([]);
 
     const addSchema = z.object({
         titleInput: z.string().min(1, 'Preencha o título'),
@@ -29,7 +29,7 @@ export const ModalAdd = ( { closeModal }: Props) => {
     const handleAddAvaliacao = () => {
         setErrors([]);
         const data = addSchema.safeParse({ titleInput, generoInput, tipoInput, avaliacaoInput });
-        console.log(data);
+        
         if(!data.success) return setErrors(getErrorFromZod(data.error));
 
             catalogoCtx?.dispatch({
@@ -106,6 +106,8 @@ export const ModalAdd = ( { closeModal }: Props) => {
             <div className="flex flex-col gap-1 mb-2">
                 <label className="text-md">Avaliação</label>
                 <textarea 
+                    rows={6}
+                    cols={60}
                     className="p-1 text-sm  outline-none border border-gray-300 rounded-md text-black"
                     placeholder="Digite a avaliação sobre o que foi assistido..."
                     value={avaliacaoInput}
@@ -120,5 +122,5 @@ export const ModalAdd = ( { closeModal }: Props) => {
             </div>
             <button onClick={handleAddAvaliacao}  className="rounded-md text-md border border-red-400 bg-red-500 py-3 text-white cursor-pointer hover:opacity-70">Adicionar</button>
         </div>
-  )
+  );
 }

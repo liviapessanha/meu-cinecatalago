@@ -1,11 +1,13 @@
 "use client"
 import { useCatalogo } from "@/contexts/catalogoContext";
+import { PostCatalogo } from "@/types/postCatalogo";
 import { SquarePenIcon, TrashIcon } from "lucide-react";
 
 type Props = {
     showModalEdit: () => void;
+    onSelected: (item: PostCatalogo) => void;
 }
-export const ItemCatalogo = ({ showModalEdit }: Props) => {
+export const ItemCatalogo = ({ showModalEdit, onSelected }: Props) => {
   const catalogoCtx = useCatalogo();
 
   const handleRemoveButton = (id: number) => {
@@ -47,7 +49,7 @@ export const ItemCatalogo = ({ showModalEdit }: Props) => {
                         />
                         <SquarePenIcon
                             size={20}    
-                            onClick={showModalEdit}
+                            onClick={() => { showModalEdit(); onSelected(item) } }
                             className="text-black text-sm  hover:opacity-90 cursor-pointer"
                         />
                     </div>
