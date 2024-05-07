@@ -1,8 +1,8 @@
 "use client"
 import { CatalogoProvider } from "@/contexts/catalogoContext";
-import { Header } from "./header";
-import { Catalogo } from "./catalogo";
-import { Footer } from "./Footer";
+import { Header } from "@/components/header";
+import { Catalogo } from "@/components/catalogo";
+import { Footer } from "@/components/Footer";
 
 export const CineCatalogo = () => {
   return (
@@ -14,9 +14,7 @@ export const CineCatalogo = () => {
             <div className="w-full">
                 <Catalogo />
             </div>
-            <div>
                 <Footer />
-            </div>
         </div>
     </CatalogoProvider>
    

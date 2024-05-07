@@ -35,7 +35,7 @@ export const Catalogo = () => {
                 
             }
             {!modalScreen &&
-                <div className="border-t border-red-300">
+                <div className="border-t border-red-400/40">
                     <ItemCatalogo showModalEdit={() => setModalScreen('edit')} onSelected={setSelectedAvaliacao} />
                 </div>
             }

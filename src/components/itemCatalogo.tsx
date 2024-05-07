@@ -19,7 +19,7 @@ export const ItemCatalogo = ({ showModalEdit, onSelected }: Props) => {
   return (
     <>
         {catalogoCtx?.catalogo.map(item => (
-            <div key={item.id} className="flex flex-col gap-2  border-b p-2 border-red-300 "> 
+            <div key={item.id} className="flex flex-col gap-2  border-b p-2 border-red-400/40 "> 
                 <div className="flex items-center gap-2 ">
                     <h1 className="text-sm md:text-md flex-1"><span className="font-bold text-base">Título: </span>{item.title}</h1>
                     <span className={`text-sm  opacity-80 rounded-md p-1
@@ -43,12 +43,12 @@ export const ItemCatalogo = ({ showModalEdit, onSelected }: Props) => {
                 <div className="flex  gap-3 w-full mt-2 items-center justify-end">
                     <div className="flex gap-3">
                         <TrashIcon 
-                        size={20} 
+                        size={15} 
                         onClick={() => handleRemoveButton(item.id)} 
                         className="text-black text-sm  hover:opacity-90 cursor-pointer"
                         />
                         <SquarePenIcon
-                            size={20}    
+                            size={15}    
                             onClick={() => { showModalEdit(); onSelected(item) } }
                             className="text-black text-sm  hover:opacity-90 cursor-pointer"
                         />
